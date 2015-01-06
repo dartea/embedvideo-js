@@ -54,7 +54,7 @@ a
     $(function() {
         $('ul a').click(function(event){
             event.preventDefault();
-            var embedcode = embedvideo($(this).attr('href'),false);
+            var embedcode = embedvideo($(this).attr('href'),false); // embedvideo(URLVIDEO,AUTOPLAY)
             console.log(embedcode);
           $('#videoplayer').html(embedcode);
 
