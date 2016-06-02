@@ -64,11 +64,22 @@ var embedvideo = (function(){  //closure
 								videoID = videoID.replace('v=','');
 
 							}
+
+							if(args[i].indexOf('list=')!= -1)
+							{
+								
+								video_id = args[i].replace('?list=','');
+								video_id = video_id.replace('list=','');
+							}
 						}
 						
-						if(typeof videoID === "undefined" )videoID=aparser.pathname.replace('/','');
-						embedcode ='<iframe width="100%" height="100%" src="//www.youtube.com/embed/'+videoID+'?autoplay='+autoplay+'&rel=0&theme=light&showinfo=0&autohide=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-				
+						if(typeof videoID === "undefined" && videoID!='')videoID=aparser.pathname.replace('/','').replace('v/','').replace('embed/','');
+						if(args[i].indexOf('list=')!= -1)
+						{
+							embedcode ='<iframe width="100%" height="100%" src="//www.youtube.com/embed/videoseries?list='+video_id+'&autoplay='+play+'&rel=0&theme=light&showinfo=0&autohide=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+						}else{
+							embedcode ='<iframe width="100%" height="100%" src="//www.youtube.com/embed/'+videoID+'?autoplay='+autoplay+'&rel=0&theme=light&showinfo=0&autohide=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+						}
 
 					break;
 
